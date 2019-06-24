@@ -1,4 +1,4 @@
-package com.university.springproject;
+package com.university.webservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
