@@ -4,6 +4,19 @@ var main = {
         $('#btn-save').on('click', function () {
             _this.save();
         });
+        $('#userCheckButton').on('click',function() { //중복체크 클릭시
+            $.ajax({
+                type: 'GET',
+                url: '/users',
+                dataType: 'json',
+                contentType:'application/json; charset=utf-8',
+                data: { userId: $('#userId').val() }
+            }).done(function(data) {
+                console.log(data);
+            }).fail(function (error) {
+                alert(error);
+            });
+        });
     },
     save : function () {
         var data = {
