@@ -33,7 +33,7 @@ public class Posts {
 
     @Builder
     public Posts(String title, String content, String author) {
-        SimpleDateFormat dataFormat = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat dataFormat = new SimpleDateFormat ( "yyyy-MM-d HH:mm:ss");
         Calendar time = Calendar.getInstance();
         String formatTime = dataFormat.format(time.getTime());
         this.title = title;

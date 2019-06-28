@@ -1,4 +1,4 @@
-package com.university.webservice.service;
+package com.university.webservice.service.posts;
 
 import com.university.webservice.domain.posts.PostsRepository;
 import com.university.webservice.dto.posts.PostsMainResponseDto;
