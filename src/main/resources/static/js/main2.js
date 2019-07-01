@@ -1,4 +1,4 @@
-var main = {
+var main2 = {
     init : function () {
         var _this = this;
         $('#btn-save').on('click', function () {
@@ -28,4 +28,4 @@ var main = {
 
 };
 
-main.init();
+main2.init();
