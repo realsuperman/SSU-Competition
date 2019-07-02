@@ -13,6 +13,12 @@ var main = {
                 data: { userId: $('#userId').val() }
             }).done(function(data) {
                 console.log(data);
+                if(data>0) {
+                    alert("중복 입력하였습니다");
+                }
+                else{
+                    alert("사용 가능한 아이디입니다");
+                }
             }).fail(function (error) {
                 alert(error);
             });
