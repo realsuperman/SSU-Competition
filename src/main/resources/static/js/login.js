@@ -1,4 +1,5 @@
 var duplication = 1; //중복체크
+var firstID; //중복체크 눌렀을 때 아이디
 var main = {
     init : function () {
         var _this = this;
@@ -19,6 +20,7 @@ var main = {
                 }
                 else{
                     duplication = 0;
+                    firstID=$('#userId').val();
                     alert("사용 가능한 아이디입니다");
                 }
             }).fail(function (error) {
@@ -37,19 +39,10 @@ var main = {
             alert("중복체크를 해주십시요");
             return;
         }
-        $.ajax({
-            type: 'GET',
-            url: '/users',
-            dataType: 'json',
-            contentType:'application/json; charset=utf-8',
-            data: { userId: $('#userId').val() }
-        }).done(function(data) {
-            console.log(data);
-            if (data > 0) {
+       if ($('#userId').val()!=firstID) {
                 alert("아이디 입력을 바꾸셨습니다. 중복체크를 다시 해주십시요");
                 return;
             }
-        });
         if ($('#userPw').val()=="") {
             alert("비밀번호를 입력해주세요");
             return;
