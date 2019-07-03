@@ -61,6 +61,7 @@ var main = {
             name: $('#name').val(),
             phone: $('#phone').val()
         };
+        
         $.ajax({
             type: 'POST',
             url: '/users',
