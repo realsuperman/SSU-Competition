@@ -62,7 +62,7 @@ var main = {
             phone: $('#phone').val()
         };
 
-        
+
         $.ajax({
             type: 'POST',
             url: '/users',
