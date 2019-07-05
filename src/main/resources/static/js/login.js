@@ -76,6 +76,4 @@ var main = {
     }
 
 };
-
-
 main.init();
