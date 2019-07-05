@@ -1,2 +1,1 @@
 jdbc:h2:mem:testdb
-csh
