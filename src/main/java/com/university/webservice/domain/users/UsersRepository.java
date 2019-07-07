@@ -10,5 +10,8 @@ public interface UsersRepository extends JpaRepository<Users, Long> { // 이렇�
     Stream<Users> findAllDesc(String userId);
 
     @Query("SELECT u FROM Users u WHERE u.userId = ?1 AND u.userPw =?2")
-    Stream<Users> perpectLogin(String uId, String uPw);
+    Stream<Users> perfectLogin(String uId, String uPw);
+
+    @Query("SELECT u FROM Users u")
+    Stream<Users> findAllDesc();
 }

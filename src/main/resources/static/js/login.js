@@ -3,7 +3,7 @@ var firstID; //중복체크 눌렀을 때 아이디
 var main = {
     init : function () {
         var _this = this;
-       $('#loginButton').on('click',function() { //로그인 할 때
+       $('#btn-Yes').on('click',function() { //로그인 할 때
             $.ajax({
                 type: 'GET',
                 url: '/login',
@@ -11,10 +11,9 @@ var main = {
                 contentType:'application/json; charset=utf-8',
                 data: { userId: $('#uId').val() ,  userPw: $('#uPw').val() }
             }).done(function(data) {
-                console.log(data);
-            }).fail(function (data){
-                console.log(data);
-                alert("아이디 또는 패스워드가 맞지 않습니다.");
+                location.href="/login/users";
+            }).fail(function (jqXHR, exception){
+                if(jqXHR.status == 500){alert("아이디 또는 패스워드가 맞지 않습니다.");}
             });
         });
         $('#btn-save').on('click', function () {
@@ -28,7 +27,6 @@ var main = {
                 contentType:'application/json; charset=utf-8',
                 data: { userId: $('#userId').val() }
             }).done(function(data) {
-                console.log(data);
                 if(data>0){
                     alert("이미 아이디가 존재합니다");
                 }
@@ -37,8 +35,8 @@ var main = {
                     firstID=$('#userId').val();
                     alert("사용 가능한 아이디입니다");
                 }
-            }).fail(function (error) {
-                alert(error);
+            }).fail(function () {
+                alert("아이디나 비밀번호가 잘못되었습니다");
             });
         });
     },

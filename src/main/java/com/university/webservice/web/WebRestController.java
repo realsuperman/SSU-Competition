@@ -6,7 +6,8 @@ import com.university.webservice.service.posts.PostsService;
 import com.university.webservice.service.users.UsersService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import sun.applet.Main;
+
+import javax.servlet.http.HttpSession;
 
 @RestController
 @AllArgsConstructor
@@ -14,7 +15,6 @@ public class WebRestController {
 
     private PostsService postsService;
     private UsersService usersService;
-    private Math main;
 
 
     @GetMapping("/users")
@@ -26,18 +26,15 @@ public class WebRestController {
         }
 
     }
+
     @GetMapping("/login")
-    public String users(@RequestParam("uId") String uid, @RequestParam("uPw") String uPw) {
-        try{
-            if(usersService.perpectLogin(uid, uPw).size()==0){
-                throw new Exception();
-            }
-            System.out.println("bye");
-        }catch (Exception e){
-            System.out.println("hello");
-            e.printStackTrace();
+    public int login(@RequestParam("userId") String uId, @RequestParam("userPw") String uPw, HttpSession session) throws Exception {
+        if(usersService.perfectLogin(uId, uPw).size()==0){
+            throw new Exception();
         }
-        return main;
+        session.setAttribute("id", "user");
+        return 1;
+
     }
 
     @PostMapping("/posts")

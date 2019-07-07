@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 
 @AllArgsConstructor
 @Service
@@ -21,8 +22,8 @@ public class UsersService {
     }
 
     @Transactional(readOnly = true)
-    public List<UsersMainResponseDto> perpectLogin(String uId, String uPw) {
-        return usersRepository.perpectLogin(uId, uPw)
+    public List<UsersMainResponseDto> perfectLogin(String uId, String uPw) {
+        return usersRepository.perfectLogin(uId, uPw)
                 .map(UsersMainResponseDto::new)
                 .collect(Collectors.toList());
     }
@@ -33,4 +34,12 @@ public class UsersService {
                 .map(UsersMainResponseDto::new)
                 .collect(Collectors.toList());
     }
+
+    @Transactional(readOnly = true)
+    public List<UsersMainResponseDto> findAllDesc() {
+        return usersRepository.findAllDesc()
+                .map(UsersMainResponseDto::new)
+                .collect(Collectors.toList());
+    }
+
 }
