@@ -3,6 +3,20 @@ var firstID; //중복체크 눌렀을 때 아이디
 var main = {
     init : function () {
         var _this = this;
+       $('#loginButton').on('click',function() { //로그인 할 때
+            $.ajax({
+                type: 'GET',
+                url: '/login',
+                dataType: 'json',
+                contentType:'application/json; charset=utf-8',
+                data: { userId: $('#uId').val() ,  userPw: $('#uPw').val() }
+            }).done(function(data) {
+                console.log(data);
+            }).fail(function (data){
+                console.log(data);
+                alert("아이디 또는 패스워드가 맞지 않습니다.");
+            });
+        });
         $('#btn-save').on('click', function () {
             _this.save();
         });

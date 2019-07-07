@@ -21,6 +21,13 @@ public class UsersService {
     }
 
     @Transactional(readOnly = true)
+    public List<UsersMainResponseDto> perpectLogin(String uId, String uPw) {
+        return usersRepository.perpectLogin(uId, uPw)
+                .map(UsersMainResponseDto::new)
+                .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
     public List<UsersMainResponseDto> findAllDesc(String userId) {
         return usersRepository.findAllDesc(userId)
                 .map(UsersMainResponseDto::new)

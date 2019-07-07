@@ -11,6 +11,8 @@ import java.util.Optional;
 public class UsersMainResponseDto {
     private Long id;
     private String userId;
+    private String uId;
+    private String uPw;
     private String userPw;
     private String name;
     private String phone;
