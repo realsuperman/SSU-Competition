@@ -88,7 +88,6 @@ var main = {
             alert(error);
         });
     }
-
 };
 
 
