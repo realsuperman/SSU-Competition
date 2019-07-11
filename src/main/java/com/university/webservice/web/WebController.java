@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
@@ -14,23 +15,33 @@ import javax.servlet.http.HttpSession;
 public class WebController {
 
     private UsersService usersService;
+    public static final String mainPage = "login";
 
-/*    @GetMapping("/")
-    public String main(Model model) {
-        model.addAttribute("posts", postsService.findAllDesc());
-        return "main";
-    }*/
     @GetMapping("/")
     public String main() {
-        return "login";
+        return mainPage;
     }
 
-    @GetMapping("/login/users")
-    public String login(Model model, HttpSession session) {
+    @PostMapping("/login/users")
+    public String login(@RequestParam("uId") String uId, Model model, HttpSession session) {
+        return commonCode(uId,model,session,"main");
+    }
+
+    @PostMapping("/common")
+    public String common(@RequestParam("uId") String uId, Model model,HttpSession session) {
+        return commonCode(uId,model,session,"common");
+    }
+
+    @PostMapping("/view")
+    public String view(@RequestParam("uId") String uId, Model model,HttpSession session) {
+        return commonCode(uId,model,session,"view");
+    }
+
+    public String commonCode(@RequestParam("uId") String uId, Model model,HttpSession session,String changePage){
         if(session.getAttribute("id")==null){
-            return "login";
+            return mainPage;
         }
-        model.addAttribute("users", usersService.findAllDesc());
-        return "main";
+        model.addAttribute("uId", uId);
+        return changePage;
     }
 }

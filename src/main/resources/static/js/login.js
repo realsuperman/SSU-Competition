@@ -3,6 +3,7 @@ var firstID; //중복체크 눌렀을 때 아이디
 var main = {
     init : function () {
         var _this = this;
+        $('#postButton').hide();
        $('#btn-Yes').on('click',function() { //로그인 할 때
             $.ajax({
                 type: 'GET',
@@ -11,7 +12,19 @@ var main = {
                 contentType:'application/json; charset=utf-8',
                 data: { userId: $('#uId').val() ,  userPw: $('#uPw').val() }
             }).done(function(data) {
-                location.href="/login/users";
+                var form = document.createElement('form');
+                var objs;
+                objs = document.createElement('input');
+                objs.setAttribute('type', 'text');
+                objs.setAttribute('name', 'uId');
+                objs.setAttribute('value', $('#uId').val());
+                form.appendChild(objs);
+                form.setAttribute('method', 'post');
+                form.setAttribute('action', "/login/users");
+                document.body.appendChild(form);
+                form.submit();
+
+                //location.href="/login/users?userId="+$('#uId').val();
             }).fail(function (jqXHR, exception){
                 if(jqXHR.status == 500){alert("아이디 또는 패스워드가 맞지 않습니다.");}
             });
