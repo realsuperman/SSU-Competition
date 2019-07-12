@@ -40,7 +40,7 @@ public class Users {
 
     @Builder
     public Users(String userId, String userPw, String name, String phone) {
-        SimpleDateFormat dataFormat = new SimpleDateFormat ( "yyyy-MM-d HH:mm:ss");
+        SimpleDateFormat dataFormat = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
         Calendar time = Calendar.getInstance();
         String formatTime = dataFormat.format(time.getTime());
         this.userId = userId;

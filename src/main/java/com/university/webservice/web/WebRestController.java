@@ -1,14 +1,16 @@
 package com.university.webservice.web;
 
+import com.university.webservice.dto.common.CommonMainResponseDto;
 import com.university.webservice.dto.posts.PostsSaveRequestDto;
 import com.university.webservice.dto.users.UsersSaveRequestDto;
+import com.university.webservice.service.common.CommonService;
 import com.university.webservice.service.posts.PostsService;
 import com.university.webservice.service.users.UsersService;
 import lombok.AllArgsConstructor;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -16,7 +18,7 @@ public class WebRestController {
 
     private PostsService postsService;
     private UsersService usersService;
-
+    private CommonService commonService;
 
     @GetMapping("/users")
     public int users(@RequestParam("userId") String userId) {
@@ -41,6 +43,14 @@ public class WebRestController {
     public int logout(HttpSession session) {
         session.invalidate();
         return 1;
+    }
+
+    @GetMapping("/common")
+    public List<CommonMainResponseDto> common(@RequestParam("userId") String userId) throws Exception {
+        if(commonService.findAllDesc(userId).size()==0){
+            throw new Exception();
+        }
+        return commonService.findAllDesc(userId);
     }
 
 

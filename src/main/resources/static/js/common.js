@@ -1,6 +1,7 @@
 var main = {
     init: function () {
         var _this = this;
+        _this.searchMethod();
         $('#logout').on('click', function () { //Logout 누를 때
             $.ajax({
                 type: 'GET',
@@ -10,7 +11,7 @@ var main = {
             }).done(function (data) {
                 if (data == 1) {
                     alert("로그아웃 되었습니다");
-                    location.href="/";
+                    location.href = "/";
                 }
             }).fail(function (error) {
                 alert(error);
@@ -25,8 +26,9 @@ var main = {
         $('#view').on('click', function () { //Logout 누를 때
             _this.pageReload("/view");
         });
+
     },
-    pageReload : function(url) {
+    pageReload: function (url) {
         var form = document.createElement('form');
         var objs;
         objs = document.createElement('input');
@@ -38,6 +40,49 @@ var main = {
         form.setAttribute('action', url);
         document.body.appendChild(form);
         form.submit();
+    },searchMethod : function(){
+        var _this = this;
+        $.ajax({
+            type: 'GET',
+            url: '/common',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            data: {userId: $('#uId').val()}
+        }).done(function (data) {
+            _this.gridDraw(data);
+        }).fail(function () {
+            alert("알 수 없는 에러입니다 관리자에게 문의해주세요.");
+        });
+    },gridDraw :function(result) { // result는 위의 json임
+        var columnDefs = [
+            {headerName : "유저아이디", field:"userId",       width: 0, cellStyle:{"textAlign":"center"},hide:true},
+            {headerName : "코드값",     field:"typeCode",     maxWidth: 200, cellStyle:{"textAlign":"center"}},
+            {headerName : "코드명",     field:"typeName",     maxWidth: 200, cellStyle:{"textAlign":"center"}},
+            {headerName : "생성일",     field:"regdate",      maxWidth: 280, cellStyle:{"textAlign":"center"}},
+            {headerName : "수정일",     field:"moddate",      maxWidth: 280, cellStyle:{"textAlign":"center"}}
+            // headerName은 보여질이름 || filed는 json객체의이름 || cellStyle는 값이 보여질 형식? 양식? || onCellClicked는 셀이 클릭되었을때 이벤트
+        ];
+
+        var rowDataSet = result; // 받은 json을 넣어줌
+
+        var rowData = rowDataSet;
+        var gridOptions = {
+            columnDefs: columnDefs,
+            rowSelection: 'multiple',
+            enableColResize: true,
+            enableSorting: true,
+            enableFilter: true,
+            enableRangeSelection: true,
+            suppressRowClickSelection: true,
+            animateRows: true,
+            editable:true,
+            debug: true
+        };
+
+        $('#commonGrid').children().remove();
+        var eGridDiv = document.querySelector('#commonGrid');
+        new agGrid.Grid(eGridDiv, gridOptions);
+        gridOptions.api.setRowData(rowData);
     }
 };
 
