@@ -6,7 +6,7 @@ mark, rp, rt, ruby, summary, time {display:inline;}
 html {width:100%;}
 body {font-family:Arial, Helvetica, sans-serif;font-size:100%; color:#7f7f7f;min-width:960px;background:#000}
 .ic {border:0;float:right;background:#fff;color:#f00;width:50%;line-height:10px;font-size:10px;margin:-220% 0 0 0;overflow:hidden;padding:0}
-.bg {width:100%; background:url(../images/bg-top.jpg) center 0 no-repeat;}
+.bg {width:100%; background:url(../../images/bg-top.jpg) center 0 no-repeat;}
 
 .main {
 	width:960px; 	
@@ -146,12 +146,12 @@ h2 {
 
 .row-bot {
 	width:100%;
-	background:url(../images/row-bot-tail.gif) center top repeat-x;
+	background:url(../../images/row-bot-tail.gif) center top repeat-x;
 }
 .row-bot-bg {
 	width:100%;
 	min-height:122px;
-	background:url(../images/row-bot-bg.jpg) center top no-repeat;
+	background:url(../../images/row-bot-bg.jpg) center top no-repeat;
 }
 
 /***** slider *****/
@@ -182,7 +182,7 @@ h2 {
 		display:block;
 		width:26px;
 		height:26px;
-		background:url(../images/slider-pagination.png) right top no-repeat;
+		background:url(../../images/slider-pagination.png) right top no-repeat;
 		cursor:pointer;
 	}
 	.pagination li.current a {cursor:default;}
@@ -200,7 +200,7 @@ h2 {
 
 .spacer-1 {
 	width:100%; 
-	background:url(../images/pic-1.gif) 217px 0 repeat-y;
+	background:url(../../images/pic-1.gif) 217px 0 repeat-y;
 }
 
 h3 {
@@ -217,12 +217,12 @@ h6 {color:#769e02;}
 .border-bot {
 	width:100%; 
 	padding-bottom:20px; 
-	background:url(../images/pic-1.gif) 0 bottom repeat-x;
+	background:url(../../images/pic-1.gif) 0 bottom repeat-x;
 }
 
 .box {
 	width:100%; 
-	background:url(../images/box-tail.gif) 0 0 repeat-x;
+	background:url(../../images/box-tail.gif) 0 0 repeat-x;
 }
 
 .button-1 {
@@ -231,7 +231,7 @@ h6 {color:#769e02;}
 	font-size:13px;
 	line-height:1.23em;
 	color:#fff; 
-	background:url(../images/button1-tail.gif) 0 0 repeat-x #c42e02;
+	background:url(../../images/button1-tail.gif) 0 0 repeat-x #c42e02;
 	cursor:pointer;
 }
 .button-1:hover {background:#c42e02;}
@@ -242,7 +242,7 @@ h6 {color:#769e02;}
 	font-size:13px;
 	line-height:1.23em;
 	color:#fff; 
-	background:url(../images/button2-tail.gif) 0 0 repeat-x #779f02;
+	background:url(../../images/button2-tail.gif) 0 0 repeat-x #779f02;
 	cursor:pointer;
 }
 .button-2:hover {background:#779f02;}
@@ -250,7 +250,7 @@ h6 {color:#769e02;}
 .list-1 li {
 	line-height:18px; 
 	padding:6px 0 6px 20px; 
-	background:url(../images/marker-1.png) 0 12px no-repeat;
+	background:url(../../images/marker-1.png) 0 12px no-repeat;
 }
 	.list-1 a {
 		display:inline-block;
@@ -273,7 +273,7 @@ h6 {color:#769e02;}
 	vertical-align: top;
 	line-height: 18px;
 	padding:6px 0 6px 20px;
-	background:url(../images/marker-2.png) 0 12px no-repeat;
+	background:url(../../images/marker-2.png) 0 12px no-repeat;
 }
 	.price-list strong {
 		display: block; 
@@ -296,7 +296,7 @@ h6 {color:#769e02;}
 	display:inline-block; 
 	font-size:14px; 
 	padding-right:8px; 
-	background:url(../images/marker-3.gif) right 8px no-repeat;
+	background:url(../../images/marker-3.gif) right 8px no-repeat;
 }
 .link-1:hover {color:#fff;} 
 
@@ -375,7 +375,7 @@ dl span {float:left; width:96px; font-weight:bold;}
 		top:-100%;
 		width:100%;
 		height:100%;
-		background:url(../images/magnify.png) no-repeat 50% 50%;
+		background:url(../../images/magnify.png) no-repeat 50% 50%;
 		z-index:2;
 		padding:0;
 	}
