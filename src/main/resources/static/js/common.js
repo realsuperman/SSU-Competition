@@ -20,11 +20,15 @@ var main = {
         $('#main').on('click', function () { //Logout 누를 때
             _this.pageReload("/login/users");
         });
-        $('#common').on('click', function () { //Logout 누를 때
+        $('#common').on('click', function () { //Common 누를 때
             _this.pageReload("/common");
         });
-        $('#view').on('click', function () { //Logout 누를 때
+        $('#view').on('click', function () { //View 누를 때
             _this.pageReload("/view");
+        });
+
+        $('#search').on('click', function () { //조회 누를 때
+            _this.searchMethod();
         });
 
     },
