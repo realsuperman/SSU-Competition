@@ -12,27 +12,25 @@ import java.util.Calendar;
 @Getter
 @Data
 @Entity
-@SequenceGenerator(name = "USERMONEYITEM_SEQ", sequenceName = "SOONGSIL_TEAM_SEQ", initialValue = 2, allocationSize = 1)
 // name=식별자 생성기 이름, sequenceName=DB에 등록될 시퀀스이름, initialValue=최초시작하는 수, allocationSize=증가하는수)
 @IdClass(UserMoneyItemPK.class)
 public class UserMoneyItem {
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USERMONEYITEM_SEQ")
-
     @Id
     private String userId;
 
-    @Column(length = 10,columnDefinition = "TEXT", nullable = false) //컬럼 형식이 TEXT 널 못넣음
+    @Id
     private String typeCode;
 
-    @Column(length = 12,columnDefinition = "TEXT", nullable = false) //컬럼 형식이 TEXT 널 못넣음
+    @Id
     private String year;
 
+    @Id
     private String month;
 
-    private String price;
+    private Long price;
 
-    private String ratio;
+    private Long ratio;
 
     private String regdate;
 
@@ -40,11 +38,12 @@ public class UserMoneyItem {
 
 
     @Builder
-    public UserMoneyItem(String userId, String year, String month, String price, String ratio) {
+    public UserMoneyItem(String userId, String typeCode,String year, String month, Long price, Long ratio) {
         SimpleDateFormat dataFormat = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
         Calendar time = Calendar.getInstance();
         String formatTime = dataFormat.format(time.getTime());
         this.userId = userId;
+        this.typeCode = typeCode;
         this.year = year;
         this.month = month;
         this.price = price;
@@ -58,6 +57,10 @@ public class UserMoneyItem {
 @Data
 class UserMoneyItemPK implements Serializable {
     private String userId;
+    private String year;
+    private String month;
+    private String typeCode;
+
 }
 
 
