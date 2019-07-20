@@ -1,4 +1,4 @@
-if($.browser.mozilla||$.browser.opera)
+if($.browser.mozilla || $.browser.opera)
 	(function(){
 	window.addEventListener('pageshow', PageShowHandler, false);
 	window.addEventListener('unload', UnloadHandler, false);
