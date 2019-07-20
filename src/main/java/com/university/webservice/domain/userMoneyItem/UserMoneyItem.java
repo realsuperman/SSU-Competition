@@ -59,3 +59,5 @@ public class UserMoneyItem {
 class UserMoneyItemPK implements Serializable {
     private String userId;
 }
+
+

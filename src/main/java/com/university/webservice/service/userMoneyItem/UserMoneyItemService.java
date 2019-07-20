@@ -34,6 +34,7 @@ public class UserMoneyItemService {
                 .collect(Collectors.toList());
     }
 
+
     @Transactional(readOnly = true)
     public List<UsersMainResponseDto> findAllDesc() {
         return usersMoneyRepository.findAllDesc()

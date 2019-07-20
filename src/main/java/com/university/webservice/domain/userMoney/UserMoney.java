@@ -17,6 +17,7 @@ import java.util.Calendar;
 @IdClass(UserMoneyPK.class)
 public class UserMoney {
 
+
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USERMONEY_SEQ")
 
     @Id
@@ -56,3 +57,4 @@ public class UserMoney {
 class UserMoneyPK implements Serializable {
     private String userId;
 }
+
