@@ -1,6 +1,7 @@
 var main = {
     init: function () {
         var _this = this;
+        _this.resizeMethod();
         _this.searchMethod();
         $('#logout').on('click', function () { //Logout 누를 때
             $.ajax({
@@ -29,6 +30,10 @@ var main = {
 
         $('#search').on('click', function () { //조회 누를 때
             _this.searchMethod();
+        });
+
+        $( window ).resize(function() {
+            _this.resizeMethod();
         });
 
     },
@@ -87,6 +92,14 @@ var main = {
         var eGridDiv = document.querySelector('#commonGrid');
         new agGrid.Grid(eGridDiv, gridOptions);
         gridOptions.api.setRowData(rowData);
+    }, resizeMethod : function(){
+        var windowWidth = $( window ).width();
+
+        if(windowWidth > 1500 ) {
+            $( ".size" ).css( "right", "25%" );
+        }else {
+            $( ".size" ).css( "right", "250px" );
+        }
     }
 };
 
