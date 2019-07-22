@@ -64,6 +64,8 @@ var main = {
         });
     },gridDraw :function(result) { // result는 위의 json임
         var columnDefs = [
+            {headerName : "선택",       field:"선택",         width:100, cellStyle:{"textAlign":"center"},checkboxSelection: true, suppressSorting: true, suppressMenu: true,
+            headerCheckSelection: true, headerCheckSelectionFilteredOnly: true, checkboxSelction: true},
             {headerName : "유저아이디", field:"userId",       width: 0, cellStyle:{"textAlign":"center"},hide:true},
             {headerName : "코드값",     field:"typeCode",     maxWidth: 200, cellStyle:{"textAlign":"center"}},
             {headerName : "코드명",     field:"typeName",     maxWidth: 200, cellStyle:{"textAlign":"center"}},
