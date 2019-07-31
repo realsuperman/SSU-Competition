@@ -12,11 +12,11 @@ import lombok.Setter;
 public class CommonSaveRequestDto {
 
     private String userId;
-    private String typeCode;
+    private Long typeCode;
     private String typeName;
 
     @Builder
-    public CommonSaveRequestDto(String userId, String typeCode, String typeName) {
+    public CommonSaveRequestDto(String userId, Long typeCode, String typeName) {
         this.userId = userId;
         this.typeCode = typeCode;
         this.typeName = typeName;
@@ -29,4 +29,5 @@ public class CommonSaveRequestDto {
                 .typeName(typeName)
                 .build();
     }
+
 }

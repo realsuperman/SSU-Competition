@@ -19,7 +19,7 @@ public class Common {
     private String userId;
 
     @Id
-    private String typeCode;
+    private Long typeCode;
 
     @Column(length = 100, columnDefinition = "TEXT",nullable = false) //컬럼 사이즈 100 이며 널 못넣음
     private String typeName;
@@ -30,7 +30,7 @@ public class Common {
 
 
     @Builder
-    public Common(String userId, String typeCode, String typeName) {
+    public Common(String userId, Long typeCode, String typeName) {
         SimpleDateFormat dataFormat = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
         Calendar time = Calendar.getInstance();
         String formatTime = dataFormat.format(time.getTime());
@@ -46,5 +46,5 @@ public class Common {
 @Data
 class CommonPK implements Serializable {
     private String userId;
-    private String typeCode;
+    private Long typeCode;
 }

@@ -10,7 +10,7 @@ import java.util.Optional;
 @Getter
 public class CommonMainResponseDto {
     private String userId;
-    private String typeCode;
+    private Long typeCode;
     private String typeName;
     private String regdate;
     private String moddate;

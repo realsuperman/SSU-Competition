@@ -35,13 +35,22 @@ public class CommonService {
     }
 
     @Transactional(readOnly = true)
-    public void deleteCommon(String userId,String typeCode) {
+    public void deleteCommon(String userId,Long typeCode) {
         commonRepository.deleteCommon(userId,typeCode);
     }
 
+
     @Transactional
-    public void saveCommon(CommonSaveRequestDto dto){
-        commonRepository.saveCommon(dto.toEntity().getUserId(),dto.toEntity().getTypeCode());
+    public void insertCommon(CommonSaveRequestDto dto) {
+        Long seq = commonRepository.getCodeValue(dto.toEntity().getUserId());
+        CommonSaveRequestDto commonSaveRequestDto= new CommonSaveRequestDto(dto.toEntity().getUserId(),seq,dto.toEntity().getTypeName());
+        commonRepository.save(commonSaveRequestDto.toEntity()).getUserId();
     }
+
+    @Transactional(readOnly = true)
+    public void updateCommon(CommonSaveRequestDto dto) {
+        commonRepository.updateCommon(dto.toEntity().getUserId(),dto.toEntity().getTypeCode(),dto.toEntity().getTypeName());
+    }
+
 
 }

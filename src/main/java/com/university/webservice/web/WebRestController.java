@@ -67,12 +67,16 @@ public class WebRestController {
 
 
     @DeleteMapping("/common")
-    public void deleteCommon(@RequestParam String userId, @RequestParam String typeCode){
+    public void deleteCommon(@RequestParam String userId, @RequestParam Long typeCode){
         commonService.deleteCommon(userId,typeCode);
     }
 
     @PostMapping("/savecommon")
     public void saveCommon(@RequestBody CommonSaveRequestDto dto) {
-        commonService.saveCommon(dto);
+        if (dto.toEntity().getTypeCode() == null){
+            commonService.insertCommon(dto);
+        }else{
+            commonService.updateCommon(dto);
+        }
     }
 }

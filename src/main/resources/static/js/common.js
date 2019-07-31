@@ -157,14 +157,16 @@ var main = {
 
         gridOptions.api.forEachNode(function (item) {
             if(item.data.edit) {
-                _this.fnSave(item.data.userId, item.data.typeCode)
+                _this.fnSave(item.data.userId, item.data.typeCode,item.data.typeName)
             }
-        })
+        });
+        _this.searchMethod();
     },
-    fnSave : function(userId,typeCode){
+    fnSave : function(userId,typeCode,typeName){
         var data = {
             userId: userId,
             typeCode: typeCode,
+            typeName : typeName,
         };
 
         $.ajax({
@@ -172,7 +174,8 @@ var main = {
             url: '/savecommon',
             dataType: 'json',
             contentType:'application/json; charset=utf-8',
-            data: JSON.stringify(data)
+            data: JSON.stringify(data),
+            async: false,
         }).done(function() {
 
         }).fail(function (error) {

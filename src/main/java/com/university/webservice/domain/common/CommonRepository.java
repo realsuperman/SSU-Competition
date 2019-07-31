@@ -14,13 +14,16 @@ public interface CommonRepository extends JpaRepository<Common, Long> { // Ïù¥Î†
     @Query("SELECT u FROM Common u")
     Stream<Common> findAllDesc();
 
-    @Modifying
-    @Transactional
-    @Query("DELETE FROM Common u WHERE u.userId=?1 AND u.typeCode=?2")
-    void deleteCommon(String userId,String typeCode);
+    @Query("SELECT COALESCE(max(u.typeCode)+1,1) FROM Common u  where u.userId=?1")
+    Long getCodeValue(String userId);
 
     @Modifying
     @Transactional
-    @Query("")
-    void saveCommon(String userId,String typeCode);
+    @Query("DELETE FROM Common u WHERE u.userId=?1 AND u.typeCode=?2")
+    void deleteCommon(String userId,Long typeCode);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE Common u SET u.typeName=?3 WHERE u.userId=?1 AND u.typeCode=?2")
+    void updateCommon(String userId,Long typeCode,String typeName);
 }
