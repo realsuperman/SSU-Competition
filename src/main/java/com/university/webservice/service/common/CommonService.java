@@ -34,4 +34,14 @@ public class CommonService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
+    public void deleteCommon(String userId,String typeCode) {
+        commonRepository.deleteCommon(userId,typeCode);
+    }
+
+    @Transactional
+    public void saveCommon(CommonSaveRequestDto dto){
+        commonRepository.saveCommon(dto.toEntity().getUserId(),dto.toEntity().getTypeCode());
+    }
+
 }

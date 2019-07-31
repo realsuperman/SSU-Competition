@@ -73,7 +73,7 @@ var main = {
         }).done(function (data) {
             _this.gridDraw(data);
         }).fail(function () {
-            alert("알 수 없는 에러입니다 관리자에게 문의해주세요.");
+            //alert("알 수 없는 에러입니다 관리자에게 문의해주세요.");
         });
     },gridDraw :function(result) { // result는 위의 json임
         var _this = this;
@@ -139,7 +139,9 @@ var main = {
         checkGrid.forEach(function (item) {
             //체크된 녀석만
             _this.fnDelete(item.userId, item.typeCode)
-        })
+        });
+        alert("삭제 완료");
+        _this.searchMethod();
     },addMethod : function(){
         var newRow = {
             userId: $('#uId').val(),
@@ -155,7 +157,7 @@ var main = {
 
         gridOptions.api.forEachNode(function (item) {
             if(item.data.edit) {
-                _this.fnSave(item.userId, item.typeCode)
+                _this.fnSave(item.data.userId, item.data.typeCode)
             }
         })
     },
