@@ -25,7 +25,7 @@ public interface CommonRepository extends JpaRepository<Common, Long> { // Ïù¥Î†
 
     @Modifying
     @Transactional
-    @Query("UPDATE Common u SET u.typeName=?3 WHERE u.userId=?1 AND u.typeCode=?2 AND moddate=CURRENT_TIMESTAMP ")
+    @Query("UPDATE Common u SET u.typeName=?3,u.moddate=CONCAT(CONCAT(CURRENT_DATE,' '),CURRENT_TIME) WHERE u.userId=?1 AND u.typeCode=?2")
     void updateCommon(String userId,Long typeCode,String typeName);
     
 }
