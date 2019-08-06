@@ -54,14 +54,6 @@ public class WebRestController {
         return commonService.findAllDesc(userId);
     }
 
-    @GetMapping("/view")
-    public List<CommonMainResponseDto> view(@RequestParam("userId") String userId) /*throws Exception*/ {
-        if(commonService.findAllDesc(userId).size()==0){
-            //throw new Exception();
-        }
-        return commonService.findAllDesc(userId);
-    }
-
 
     @PostMapping("/posts")
     public Long savePosts(@RequestBody PostsSaveRequestDto dto) {
