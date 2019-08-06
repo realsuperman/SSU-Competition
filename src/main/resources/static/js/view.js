@@ -26,7 +26,7 @@ var main = {
         $('#view').on('click', function () { //Logout 누를 때
             _this.pageReload("/view");
         });
-    },
+    }, 
     pageReload : function(url) {
         var form = document.createElement('form');
         var objs;
