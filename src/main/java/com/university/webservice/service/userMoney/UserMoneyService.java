@@ -1,6 +1,11 @@
 package com.university.webservice.service.userMoney;
 
+import com.university.webservice.domain.userMoney.UserMoneyRepository;
 import com.university.webservice.domain.users.UsersRepository;
+import com.university.webservice.dto.common.CommonMainResponseDto;
+import com.university.webservice.dto.common.CommonSaveRequestDto;
+import com.university.webservice.dto.userMoney.UserMoneyMainResponseDto;
+import com.university.webservice.dto.userMoney.UserMoneySaveRequestDto;
 import com.university.webservice.dto.users.UsersMainResponseDto;
 import com.university.webservice.dto.users.UsersSaveRequestDto;
 import lombok.AllArgsConstructor;
@@ -14,6 +19,7 @@ import java.util.stream.Collectors;
 @Service
 public class UserMoneyService {
     private UsersRepository usersMoneyRepository;
+    private UserMoneyRepository userMoneyRepository;
 
     @Transactional
     public Long save(UsersSaveRequestDto dto){
@@ -25,6 +31,18 @@ public class UserMoneyService {
         return usersMoneyRepository.perfectLogin(uId, uPw)
                 .map(UsersMainResponseDto::new)
                 .collect(Collectors.toList());
+
+    }
+    @Transactional(readOnly = true)
+    public  List<UserMoneyMainResponseDto> searchDesc(String userId) {
+        return userMoneyRepository.searchDesc(userId)
+                .map(UserMoneyMainResponseDto::new)
+                .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public void deleteView(String userId, String year, String month) {
+        userMoneyRepository.deleteView(userId, year, month);
     }
 
     @Transactional(readOnly = true)
@@ -40,6 +58,24 @@ public class UserMoneyService {
         return usersMoneyRepository.findAllDesc()
                 .map(UsersMainResponseDto::new)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public String save(UserMoneySaveRequestDto dto){
+        return userMoneyRepository.save(dto.toEntity()).getUserId();
+    }
+
+
+    @Transactional
+    public  void insertView(UserMoneySaveRequestDto dto) {
+        Long seq = userMoneyRepository.getCodeValue(dto.toEntity().getUserId());
+        UserMoneySaveRequestDto userMoneySaveRequestDto= new UserMoneySaveRequestDto(dto.toEntity().getUserId(),dto.toEntity().getYear(),dto.toEntity().getMonth(),seq);
+        userMoneyRepository.save(userMoneySaveRequestDto.toEntity()).getUserId();
+    }
+
+    @Transactional(readOnly = true)
+    public void updateView(UserMoneySaveRequestDto dto) {
+        userMoneyRepository.updateView(dto.toEntity().getUserId(),dto.toEntity().getMoney(),dto.toEntity().getYear(),dto.toEntity().getMonth());
     }
 
 }

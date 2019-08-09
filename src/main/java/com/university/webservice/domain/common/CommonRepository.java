@@ -12,6 +12,7 @@ public interface CommonRepository extends JpaRepository<Common, Long> { // Ïù¥Î†
     @Query("SELECT u FROM Common u WHERE u.userId = ?1")
     Stream<Common> findAllDesc(String userId);
 
+
     @Query("SELECT u FROM Common u")
     Stream<Common> findAllDesc();
 

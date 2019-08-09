@@ -1,6 +1,5 @@
 package com.university.webservice.dto.userMoney;
 
-import com.university.webservice.domain.common.Common;
 import com.university.webservice.domain.userMoney.UserMoney;
 import lombok.Builder;
 import lombok.Getter;
