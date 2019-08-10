@@ -78,7 +78,7 @@ var main = {
             {
                 headerName: "선택",
                 field: "선택",
-                minWidth: 40,
+                width: 60,
                 cellStyle: {"textAlign": "center"},
                 checkboxSelection: true,
                 suppressSorting: true,
@@ -87,12 +87,12 @@ var main = {
                 headerCheckSelectionFilteredOnly: true,
                 checkboxSelction: true
             },
-            {headerName: "유저아이디", field: "userId", minWidth: 0, cellStyle: {"textAlign": "center"}, hide: true},
-            {headerName: "년", field: "year", minWidth: 40, cellStyle: {"textAlign": "center"}, editable: true},
-            {headerName: "월", field: "month", minWidth: 40, cellStyle: {"textAlign": "center"}, editable: true},
-            {headerName: "용돈", field: "money", minWidth: 60, cellStyle: {"textAlign": "center"}, editable: true},
-            {headerName: "생성일", field: "regdate", minWidth: 70, cellStyle: {"textAlign": "center"}},
-            {headerName: "수정일", field: "moddate", minWidth: 70, cellStyle: {"textAlign": "center"}}
+            {headerName: "유저아이디", field: "userId", width: 0, cellStyle: {"textAlign": "center"}, hide: true},
+            {headerName: "년", field: "year", width: 70, cellStyle: {"textAlign": "center"}, editable: true},
+            {headerName: "월", field: "month", width: 70, cellStyle: {"textAlign": "center"}, editable: true},
+            {headerName: "용돈", field: "money", width: 80, cellStyle: {"textAlign": "center"}, editable: true},
+            {headerName: "생성일", field: "regdate", width: 150, cellStyle: {"textAlign": "center"}},
+            {headerName: "수정일", field: "moddate", width: 150, cellStyle: {"textAlign": "center"}}
             // headerName은 보여질이름 || filed는 json객체의이름 || cellStyle는 값이 보여질 형식? 양식? || onCellClicked는 셀이 클릭되었을때 이벤트
         ];
 
