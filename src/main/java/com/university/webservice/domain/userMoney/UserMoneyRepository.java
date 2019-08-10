@@ -17,6 +17,9 @@ public interface UserMoneyRepository extends JpaRepository<UserMoney, Long> { //
     @Query("SELECT u FROM UserMoney u WHERE u.userId = ?1")
     Stream<UserMoney> searchDesc(String userId);
 
+    @Query("SELECT u FROM UserMoney u WHERE u.userId = ?1 AND u.year = ?2 AND u.month = ?3")
+    Stream<UserMoney> searchDesc(String userId,String year,String month);
+
     @Modifying
     @Transactional
     @Query("DELETE FROM UserMoney u WHERE u.userId=?1 AND u.year=?2 AND u.month=?3")
@@ -24,10 +27,7 @@ public interface UserMoneyRepository extends JpaRepository<UserMoney, Long> { //
 
     @Modifying
     @Transactional
-    @Query("UPDATE UserMoney u SET u.year=?3,u.month=?4,u.moddate=CONCAT(CONCAT(CURRENT_DATE,' '),CURRENT_TIME) WHERE u.userId=?1 AND u.money=?2")
+    @Query("UPDATE UserMoney u SET u.money=?2,u.moddate=CONCAT(CONCAT(CURRENT_DATE,' '),CURRENT_TIME) WHERE u.userId=?1 AND u.year=?3 AND u.month=?4")
     void updateView(String userId,Long money,String year,String month);
-
-    @Query("SELECT COALESCE(max(u.money)+1,1) FROM UserMoney u  where u.userId=?1")
-    Long getCodeValue(String userId);
 
 }

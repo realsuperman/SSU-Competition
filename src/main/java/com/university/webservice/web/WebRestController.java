@@ -102,10 +102,6 @@ public class WebRestController {
 
     @PostMapping("/saveview")
     public void saveView(@RequestBody UserMoneySaveRequestDto dto) {
-        if (dto.toEntity().getYear() == null && dto.toEntity().getMonth() == null) {
-            userMoneyService.insertView(dto);
-        } else {
-            userMoneyService.updateView(dto);
-        }
+        userMoneyService.saveView(dto);
     }
 }

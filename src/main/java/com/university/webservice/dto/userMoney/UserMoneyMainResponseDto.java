@@ -18,6 +18,12 @@ public class UserMoneyMainResponseDto {
 
     public UserMoneyMainResponseDto(UserMoney entity) {
         userId = entity.getUserId();
+        year = entity.getYear();
+        month = entity.getMonth();
+        money = entity.getMoney();
+        regdate = entity.getRegdate();
+        moddate = entity.getModdate();
+
         //modifiedDate = toStringDateTime(entity.getModdate());
     }
 

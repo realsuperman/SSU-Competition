@@ -67,15 +67,16 @@ public class UserMoneyService {
 
 
     @Transactional
-    public  void insertView(UserMoneySaveRequestDto dto) {
-        Long seq = userMoneyRepository.getCodeValue(dto.toEntity().getUserId());
-        UserMoneySaveRequestDto userMoneySaveRequestDto= new UserMoneySaveRequestDto(dto.toEntity().getUserId(),dto.toEntity().getYear(),dto.toEntity().getMonth(),seq);
-        userMoneyRepository.save(userMoneySaveRequestDto.toEntity()).getUserId();
-    }
-
-    @Transactional(readOnly = true)
-    public void updateView(UserMoneySaveRequestDto dto) {
-        userMoneyRepository.updateView(dto.toEntity().getUserId(),dto.toEntity().getMoney(),dto.toEntity().getYear(),dto.toEntity().getMonth());
+    public void saveView(UserMoneySaveRequestDto dto) {
+        UserMoneySaveRequestDto userMoneySaveRequestDto= new UserMoneySaveRequestDto(dto.toEntity().getUserId(),dto.toEntity().getYear(),dto.toEntity().getMonth(),dto.toEntity().getMoney());
+        List<UserMoneyMainResponseDto> a = userMoneyRepository.searchDesc(userMoneySaveRequestDto.toEntity().getUserId(),userMoneySaveRequestDto.toEntity().getYear(),userMoneySaveRequestDto.toEntity().getMonth())
+                .map(UserMoneyMainResponseDto::new)
+                .collect(Collectors.toList());
+        if(a.size() == 0){
+            userMoneyRepository.save(userMoneySaveRequestDto.toEntity()).getUserId();
+        }else{
+            userMoneyRepository.updateView(userMoneySaveRequestDto.toEntity().getUserId(),dto.toEntity().getMoney(),dto.toEntity().getYear(),dto.toEntity().getMonth());
+        }
     }
 
 }

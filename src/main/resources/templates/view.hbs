@@ -10,6 +10,8 @@
     <script src="/js/lib/cufon-replace.js" type="text/javascript"></script>
     <script src="/js/lib/Dynalight_400.font.js" type="text/javascript"></script>
     <script src="/js/lib/FF-cash.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/ag-grid@18.1.2/dist/ag-grid.min.js"></script> <!-- 이건 그냥 그대로 쓰면됨 -->
+    <link rel="stylesheet" href="css/lib//style-ag-grid.css"> <!-- 첨부파일 CSS -->
 	<!--[if lt IE 8]>
     <div style=' clear: both; text-align:center; position: relative;'>
         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -74,9 +76,7 @@
                     </nav>
          </div>
         <br>
-        <div class="main">
-            <div style="width: 50%; height: 650px;" id="viewGrid" class="ag-grid-div ag-theme-balham ag-basic "></div>
-        </div>
+        <div style="width: 50%; height: 650px;" id="viewGrid" class="ag-grid-div ag-theme-balham ag-basic "></div>
     </section>
 	<!--==============================footer=================================-->
     <footer>
@@ -98,6 +98,4 @@
         <script src="/js/lib/jquery.min.js"></script>
         <script src="/js/lib/bootstrap.js"></script>
         <script src="/js/view.js"></script>
-        <script src="https://unpkg.com/ag-grid@18.1.2/dist/ag-grid.min.js"></script> <!-- 이건 그냥 그대로 쓰면됨 -->
-        <link rel="stylesheet" href="css/lib//style-ag-grid.css"> <!-- 첨부파일 CSS -->
 </html>
