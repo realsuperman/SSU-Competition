@@ -1,11 +1,13 @@
 package com.university.webservice.domain.userMoney;
 
+import com.university.webservice.domain.userMoneyItem.UserMoneyItem;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collection;
 
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED) //기본 생성자 자동 추가 및 기본생성자의 접근 권한을 protected로 제한
@@ -32,6 +34,8 @@ public class UserMoney {
 
     private String moddate;
 
+    @OneToMany(mappedBy = "userMoney",cascade=CascadeType.ALL)
+    private Collection<UserMoneyItem> userMoneyItem;
 
     @Builder
     public UserMoney(String userId, String year, String month, Long money) {

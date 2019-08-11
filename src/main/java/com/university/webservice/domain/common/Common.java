@@ -1,5 +1,6 @@
 package com.university.webservice.domain.common;
 
+import com.university.webservice.domain.userMoneyItem.UserMoneyItem;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,6 +29,8 @@ public class Common {
 
     private String moddate;
 
+    @OneToOne(mappedBy="common")
+    private UserMoneyItem userMoneyItem;
 
     @Builder
     public Common(String userId, Long typeCode, String typeName) {

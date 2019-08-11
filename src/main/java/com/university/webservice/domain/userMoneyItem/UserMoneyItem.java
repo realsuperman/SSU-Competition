@@ -1,5 +1,7 @@
 package com.university.webservice.domain.userMoneyItem;
 
+import com.university.webservice.domain.common.Common;
+import com.university.webservice.domain.userMoney.UserMoney;
 import lombok.*;
 
 import javax.persistence.*;
@@ -36,6 +38,11 @@ public class UserMoneyItem {
 
     private String moddate;
 
+    @OneToOne
+    private Common common;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private UserMoney userMoney;
 
     @Builder
     public UserMoneyItem(String userId, String typeCode,String year, String month, Long price, Long ratio) {
