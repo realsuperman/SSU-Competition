@@ -124,7 +124,7 @@ var main = {
         var windowWidth = $(window).width();
 
         if (windowWidth > 1500) {
-            $(".size").css("right", "50%");
+            $(".size").css("left", "38%");
         } else {
             $(".size").css("right", "250px");
         }
