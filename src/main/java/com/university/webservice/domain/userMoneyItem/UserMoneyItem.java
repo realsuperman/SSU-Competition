@@ -38,10 +38,12 @@ public class UserMoneyItem {
 
     private String moddate;
 
+    @Transient
     @OneToOne
     private Common common;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Transient
+    @OneToOne
     private UserMoney userMoney;
 
     @Builder

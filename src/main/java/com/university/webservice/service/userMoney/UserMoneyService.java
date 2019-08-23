@@ -12,8 +12,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @AllArgsConstructor
 @Service
@@ -34,7 +35,12 @@ public class UserMoneyService {
 
     }
     @Transactional(readOnly = true)
-    public  List<UserMoneyMainResponseDto> searchDesc(String userId) {
+    public List<UserMoneyMainResponseDto> searchDesc(String userId) {
+/*        List<UserMoneyMainResponseDto> dto = new ArrayList<>();
+
+        Stream<Object[]> results = userMoneyRepository.searchDesc(userId);
+        results.forEach(r -> Arrays.toString(r));*/
+
         return userMoneyRepository.searchDesc(userId)
                 .map(UserMoneyMainResponseDto::new)
                 .collect(Collectors.toList());

@@ -15,12 +15,14 @@ public class UserMoneyMainResponseDto {
     private Long money;
     private String regdate;
     private String moddate;
+    private Long leftMoney;
 
     public UserMoneyMainResponseDto(UserMoney entity) {
         userId = entity.getUserId();
         year = entity.getYear();
         month = entity.getMonth();
         money = entity.getMoney();
+        leftMoney = entity.getLeftMoney();
         regdate = entity.getRegdate();
         moddate = entity.getModdate();
 

@@ -34,8 +34,11 @@ public class UserMoney {
 
     private String moddate;
 
-    @OneToMany(mappedBy = "userMoney",cascade=CascadeType.ALL)
-    private Collection<UserMoneyItem> userMoneyItem;
+    private Long leftMoney;
+
+    @Transient
+    @OneToOne
+    private UserMoneyItem userMoneyItem;
 
     @Builder
     public UserMoney(String userId, String year, String month, Long money) {
@@ -49,7 +52,6 @@ public class UserMoney {
         this.regdate = formatTime;
         this.moddate = formatTime;
     }
-
 }
 
 @Data

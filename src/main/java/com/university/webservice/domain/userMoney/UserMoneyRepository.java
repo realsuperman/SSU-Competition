@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.Modifying;
 import javax.transaction.Transactional;
 
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 public interface UserMoneyRepository extends JpaRepository<UserMoney, Long> { // 이렇게하면 CRUD가 기본적으로 생김
@@ -14,7 +16,7 @@ public interface UserMoneyRepository extends JpaRepository<UserMoney, Long> { //
     @Query("SELECT u FROM UserMoney u")
     Stream<UserMoney> findAllDesc();
 
-    @Query("SELECT u FROM UserMoney u WHERE u.userId = ?1")
+    @Query(value="SELECT u.user_Id,u.year,u.month,u.money,u.regdate,u.moddate,u.money-sum(i.price) AS LEFT_MONEY FROM User_Money u LEFT JOIN User_Money_Item i ON u.user_Id = i.user_Id AND u.year = i.year AND u.month = i.month WHERE u.user_Id = ?1 GROUP BY u.user_Id,u.year,u.month,u.money,u.regdate,u.moddate",nativeQuery = true)
     Stream<UserMoney> searchDesc(String userId);
 
     @Query("SELECT u FROM UserMoney u WHERE u.userId = ?1 AND u.year = ?2 AND u.month = ?3")

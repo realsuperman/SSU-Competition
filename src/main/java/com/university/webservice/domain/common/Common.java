@@ -29,6 +29,7 @@ public class Common {
 
     private String moddate;
 
+    @Transient
     @OneToOne(mappedBy="common")
     private UserMoneyItem userMoneyItem;
 

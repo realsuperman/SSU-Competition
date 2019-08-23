@@ -68,6 +68,7 @@ var main = {
             contentType: 'application/json; charset=utf-8',
             data: {userId: $('#uId').val()}
         }).done(function (data) {
+            console.log(data);
             _this.gridDraw(data);
         }).fail(function () {
             //alert("알 수 없는 에러입니다 관리자에게 문의해주세요.");
@@ -91,6 +92,7 @@ var main = {
             {headerName: "년", field: "year", width: 70, cellStyle: {"textAlign": "center"}, editable: true},
             {headerName: "월", field: "month", width: 70, cellStyle: {"textAlign": "center"}, editable: true},
             {headerName: "용돈", field: "money", width: 80, cellStyle: {"textAlign": "center"}, editable: true},
+            {headerName: "남은돈", field: "leftMoney", width: 80, cellStyle: {"textAlign": "center"}},
             {headerName: "생성일", field: "regdate", width: 150, cellStyle: {"textAlign": "center"}},
             {headerName: "수정일", field: "moddate", width: 150, cellStyle: {"textAlign": "center"}}
             // headerName은 보여질이름 || filed는 json객체의이름 || cellStyle는 값이 보여질 형식? 양식? || onCellClicked는 셀이 클릭되었을때 이벤트
