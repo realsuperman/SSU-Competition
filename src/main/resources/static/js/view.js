@@ -125,8 +125,10 @@ var main = {
 
         if (windowWidth > 1500) {
             $(".size").css("left", "38%");
+            $(".size2").css("left", "72%");
         } else {
             $(".size").css("right", "250px");
+            $(".size").css("right", "500px");
         }
     },fnDelete : function(userId, year,month) {
         $.ajax({
