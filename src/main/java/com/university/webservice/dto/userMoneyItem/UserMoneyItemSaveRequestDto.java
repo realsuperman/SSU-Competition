@@ -13,7 +13,7 @@ import lombok.Setter;
 public class UserMoneyItemSaveRequestDto {
 
     private String userId;
-    private String typeCode;
+    private Long typeCode;
     private String year;
     private String month;
     private Long price;
@@ -22,7 +22,7 @@ public class UserMoneyItemSaveRequestDto {
     private String moddate;
 
     @Builder
-    public UserMoneyItemSaveRequestDto(String userId, String typeCode, String year, String month,Long price,Long ratio) {
+    public UserMoneyItemSaveRequestDto(String userId, Long typeCode, String year, String month,Long price,Long ratio) {
         this.userId = userId;
         this.typeCode = typeCode;
         this.year = year;

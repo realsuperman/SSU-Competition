@@ -22,7 +22,7 @@ public class UserMoneyItem {
     private String userId;
 
     @Id
-    private String typeCode;
+    private Long typeCode;
 
     @Id
     private String year;
@@ -47,7 +47,7 @@ public class UserMoneyItem {
     private UserMoney userMoney;
 
     @Builder
-    public UserMoneyItem(String userId, String typeCode,String year, String month, Long price, Long ratio) {
+    public UserMoneyItem(String userId, Long typeCode,String year, String month, Long price, Long ratio) {
         SimpleDateFormat dataFormat = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
         Calendar time = Calendar.getInstance();
         String formatTime = dataFormat.format(time.getTime());
@@ -68,7 +68,7 @@ class UserMoneyItemPK implements Serializable {
     private String userId;
     private String year;
     private String month;
-    private String typeCode;
+    private Long typeCode;
 
 }
 
