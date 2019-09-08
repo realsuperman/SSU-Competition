@@ -10,7 +10,7 @@ import java.util.Optional;
 @Getter
 public class UserMoneyItemMainResponseDto {
     private String userId;
-    private String typeCode;
+    private Long typeCode;
     private String year;
     private String month;
     private Long price;

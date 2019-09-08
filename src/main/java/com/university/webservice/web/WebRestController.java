@@ -5,11 +5,13 @@ import com.university.webservice.dto.common.CommonSaveRequestDto;
 import com.university.webservice.dto.posts.PostsSaveRequestDto;
 import com.university.webservice.dto.userMoney.UserMoneyMainResponseDto;
 import com.university.webservice.dto.userMoney.UserMoneySaveRequestDto;
+import com.university.webservice.dto.userMoneyItem.UserMoneyItemMainResponseDto;
 import com.university.webservice.dto.users.UsersMainResponseDto;
 import com.university.webservice.dto.users.UsersSaveRequestDto;
 import com.university.webservice.service.common.CommonService;
 import com.university.webservice.service.posts.PostsService;
 import com.university.webservice.service.userMoney.UserMoneyService;
+import com.university.webservice.service.userMoneyItem.UserMoneyItemService;
 import com.university.webservice.service.users.UsersService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,7 @@ public class WebRestController {
     private UsersService usersService;
     private CommonService commonService;
     private UserMoneyService userMoneyService;
+    private UserMoneyItemService userMoneyItemService;
 
 
     @GetMapping("/users")
@@ -45,6 +48,13 @@ public class WebRestController {
         session.setAttribute("id", "user");
         return 1;
 
+    }
+    @GetMapping("/itemview")
+    public List<UserMoneyItemMainResponseDto> itemView(@RequestParam("userId") String userId,@RequestParam("year") String year,@RequestParam("month") String month) {
+        if (userMoneyItemService.itemView(userId,year,month).size() == 0) {
+            //throw new Exception();
+        }
+        return userMoneyItemService.itemView(userId,year,month);
     }
 
     @GetMapping("/logout")
