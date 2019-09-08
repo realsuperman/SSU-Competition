@@ -17,10 +17,17 @@ public class UserMoneyItemMainResponseDto {
     private Long ratio;
     private String regdate;
     private String moddate;
+    private String typeName;
 
     public UserMoneyItemMainResponseDto(UserMoneyItem entity) {
         userId = entity.getUserId();
-        //modifiedDate = toStringDateTime(entity.getModdate());
+        typeCode = entity.getTypeCode();
+        year = entity.getYear();
+        month = entity.getMonth();
+        price = entity.getPrice();
+        typeName = entity.getTypeName();
+        regdate = entity.getRegdate();
+        moddate = entity.getModdate();
     }
 
     /**

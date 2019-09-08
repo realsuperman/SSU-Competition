@@ -38,6 +38,8 @@ public class UserMoneyItem {
 
     private String moddate;
 
+    private String typeName;
+
     @Transient
     @OneToOne
     private Common common;
