@@ -1,10 +1,30 @@
 var duplication = 1; //중복체크
 var firstID; //중복체크 눌렀을 때 아이디
+var sw=0;
+var badCnt=0;
+var locationCnt=0;
 var main = {
     init : function () {
         var _this = this;
+        window.onload = function(){
+            webgazer.setGazeListener(function(data, elapsedTime) {
+                if(color == 'green') sw=1;
+                if (data == null) {
+                    if(sw==1 && color!='green') if(++badCnt > 100) console.log("부정행위 의심됨 db에 우선저장");
+                    return;
+                }
+
+                if(sw==1 && color !='green') if(++badCnt > 100) console.log("부정행위 의심됨 db에 우선저장");
+
+                var xprediction = data.x; //these x coordinates are relative to the viewport
+                var yprediction = data.y; //these y coordinates are relative to the viewport
+
+                console.log(xprediction, yprediction); //elapsed time is based on time since begin was called
+            }).begin();
+        }
+
         $('#postButton').hide();
-       $('#btn-Yes').on('click',function() { //로그인 할 때
+        $('#btn-Yes').on('click',function() { //로그인 할 때
             $.ajax({
                 type: 'GET',
                 url: '/login',
@@ -64,10 +84,10 @@ var main = {
             alert("중복체크를 해주십시요");
             return;
         }
-       if ($('#userId').val()!=firstID) {
-                alert("아이디 입력을 바꾸셨습니다. 중복체크를 다시 해주십시요");
-                return;
-            }
+        if ($('#userId').val()!=firstID) {
+            alert("아이디 입력을 바꾸셨습니다. 중복체크를 다시 해주십시요");
+            return;
+        }
         if ($('#userPw').val()=="") {
             alert("비밀번호를 입력해주세요");
             return;
