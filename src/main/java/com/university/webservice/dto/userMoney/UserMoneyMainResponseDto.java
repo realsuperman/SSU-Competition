@@ -25,7 +25,6 @@ public class UserMoneyMainResponseDto {
         leftMoney = entity.getLeftMoney();
         regdate = entity.getRegdate();
         moddate = entity.getModdate();
-
         //modifiedDate = toStringDateTime(entity.getModdate());
     }
 
