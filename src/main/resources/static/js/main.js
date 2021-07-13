@@ -1,6 +1,25 @@
+var sw=0;
+var badCnt=0;
+var locationCnt=0;
 var main = {
     init: function () {
         var _this = this;
+        window.onload = function(){
+            webgazer.setGazeListener(function(data, elapsedTime) {
+                if(color == 'green') sw=1;
+                if (data == null) {
+                    if(sw==1 && color!='green') if(++badCnt > 100) console.log("부정행위 의심됨 db에 우선저장");
+                    return;
+                }
+
+                if(sw==1 && color !='green') if(++badCnt > 100) console.log("부정행위 의심됨 db에 우선저장");
+
+                var xprediction = data.x; //these x coordinates are relative to the viewport
+                var yprediction = data.y; //these y coordinates are relative to the viewport
+
+                console.log(xprediction, yprediction); //elapsed time is based on time since begin was called
+            }).begin();
+        }
         $('#logout').on('click', function () { //Logout 누를 때
             $.ajax({
                 type: 'GET',
