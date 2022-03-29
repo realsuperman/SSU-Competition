@@ -20,7 +20,6 @@ var main = {
                 var yprediction = data.y; //these y coordinates are relative to the viewport
 
                 console.log(xprediction, yprediction); //elapsed time is based on time since begin was called
-                // 테스트 커밋(깃허브 api 잘 호출되나 확인)
             }).begin();
         }
 
