@@ -24,6 +24,7 @@ public class WebController {
 
     @PostMapping("/login/users")
     public String login(@RequestParam("uId") String uId, Model model, HttpSession session) {
+        System.out.println(session);
         return commonCode(uId,model,session,"main");
     }
 

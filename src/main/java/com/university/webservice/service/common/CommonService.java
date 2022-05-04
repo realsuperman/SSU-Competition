@@ -1,6 +1,7 @@
 package com.university.webservice.service.common;
 
 import com.university.webservice.domain.common.CommonRepository;
+import com.university.webservice.domain.common.CommonRepository;
 import com.university.webservice.dto.common.CommonMainResponseDto;
 import com.university.webservice.dto.common.CommonSaveRequestDto;
 import lombok.AllArgsConstructor;

@@ -6,7 +6,7 @@ var locationCnt=0;
 var main = {
     init : function () {
         var _this = this;
-        window.onload = function(){
+/*        window.onload = function(){
             webgazer.setGazeListener(function(data, elapsedTime) {
                 if(color == 'green') sw=1;
                 if (data == null) {
@@ -21,7 +21,7 @@ var main = {
 
                 console.log(xprediction, yprediction); //elapsed time is based on time since begin was called
             }).begin();
-        }
+        }*/
 
         $('#postButton').hide();
         $('#btn-Yes').on('click',function() { //로그인 할 때
